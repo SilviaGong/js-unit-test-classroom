@@ -1,10 +1,13 @@
+const { test } = require("picomatch");
 const classroom = require("../classroom.js");
 const staff = require("../staff.js");
 const registerStudent = require("../student.js");
+const { default: expect } = require("expect");
 
+//globle variable
 beforeAll(() => {
     gerard = staff.registerTeacher("Gerard Darris", "Programming", true);
-    
+
     patrick = staff.registerTA("Patrick Durian", true);
     dennis = staff.registerTA("Dennis Sheets", true);
     banana = staff.registerTA("Banana Cat", false);
@@ -26,7 +29,18 @@ describe("createClassroom", () => {
     Test 3: test length of ta and student arrays
     Test 4: test that lc101 object values match inputs
     */
+    test("should return an object when passed valid data", () => {
+        expect(lc101).toBeInstanceOf(Object);
+    });
+    test("invalid outputs should return -1", () => {
+        expect(classroom.createClassroom()).toBe(-1);
+    });
+    test("objct arrays should be of specified length", () => {
+        expect(lc101.tas.length).toBe(3);
+        expect(lc101.students.length).toBe(3);
+    });
 });
+
 
 describe("getClassInfo", () => {
     /* TODO

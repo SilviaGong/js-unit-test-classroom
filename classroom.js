@@ -11,7 +11,16 @@ An array of student objects
 See sample classroom object in samples.js
 */
 
-function createClassroom(subject, teacher, tas, students) {}
+function createClassroom(subject, teacher, tas, students) {
+    if (!subject || !teacher || !tas || !students) {
+        return -1;
+    }
+    return {
+        tas: tas,
+        teacher: teacher,
+        students: students
+    };
+}
 
 /* TODO
 getClassInfo will return a template literal
@@ -21,7 +30,7 @@ and the number of TAs and students.
 See sample string in samples.js
 */
 
-function getClassInfo(classroom) {}
+function getClassInfo(classroom) { }
 
 module.exports = {
     createClassroom: createClassroom,
